@@ -11,14 +11,14 @@ let conn = mysql.createConnection({
     host : "localhost",
     user : "root",
     password : "",
-    database : 'batch1_node_js'
+    database : 'final_year_project'
 });
 
 let exe = util.promisify(conn.query).bind(conn);
 
 app.get("/",async function(req, res){
 
-    let data = await exe('SELECT * FROM tbl_user_data');
+    let data = await exe('SELECT * FROM tbl_01_user_data');
     res.render("home.ejs", {data : data});
 });
 
