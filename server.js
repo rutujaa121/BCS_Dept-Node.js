@@ -36,7 +36,7 @@ let exe = util.promisify(conn.query).bind(conn);
 app.get("/",async function(req, res){
 
     let data = await exe('SELECT * FROM tbl_01_user_data');
-    res.render("home.ejs", {data : data});
+    res.render("user/home.ejs", {data : data});
 });
 
 
