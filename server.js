@@ -1,3 +1,19 @@
+// Project Setup 
+// npm i express ejs mysql util body-parser express-fileupload express-session 
+// 4 folder create 
+// bcs_dept_node.js
+    //  views
+            // admin 
+                // home.ejs
+            // user
+                // home.ejs
+    //  routes
+            // admin.js
+            // user.js
+    //  database
+            // db.js
+    //  public
+
 const express = require('express');
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
@@ -6,6 +22,7 @@ const util = require("util");
 const app = express();
 
 app.use(bodyParser.urlencoded({extended : true}));
+// app.use(upload());
 
 let conn = mysql.createConnection({
     host : "localhost",
@@ -21,6 +38,14 @@ app.get("/",async function(req, res){
     let data = await exe('SELECT * FROM tbl_01_user_data');
     res.render("home.ejs", {data : data});
 });
+
+
+let adminRoute = require("./routes/admin");
+let userRoute = require("./routes/user");
+// 
+// app.use("/admin", adminRoute);
+// app.use("/", userRoute);
+
 
 app.listen(2000, function(){
     console.log("Server Start")
