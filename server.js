@@ -32,7 +32,7 @@ let conn = mysql.createConnection({
 });
 
 let exe = util.promisify(conn.query).bind(conn);
-
+app.use(express.static('public'));
 app.get("/",async function(req, res){
 
     let data = await exe('SELECT * FROM tbl_01_user_data');
