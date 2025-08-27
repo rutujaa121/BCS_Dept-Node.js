@@ -9,31 +9,29 @@
 // 
 // module.exports = router;
 
-
 import express from "express";
 import { db } from "../database/db.js";
 
 const router = express.Router();
 
-// Admission Form - GET
+// Admission form page
 router.get("/admission", (req, res) => {
-  res.render("user/admission");
+  res.render("user/admission"); // views/user/admission.ejs
 });
 
-// Admission Form - POST
+// Admission form submit
 router.post("/admission", async (req, res) => {
-  const { name, email, dob, course, category, score } = req.body;
+  const { name, dob, course, category, score } = req.body;
 
   try {
-    const [result] = await db.query(
-      "INSERT INTO applications (name, email, dob, course, category, score) VALUES (?,?,?,?,?,?)",
-      [name, email, dob, course, category, score]
+    await db.query(
+      "INSERT INTO `tbl_01-admission` (name, dob, course, category, score) VALUES (?, ?, ?, ?, ?)",
+      [name, dob, course, category, score]
     );
-
-    res.render("user/success", { appId: result.insertId });
+    res.send("🎉 Admission form submitted successfully!");
   } catch (err) {
     console.error(err);
-    res.send("Error submitting form");
+    res.status(500).send("Error inserting data");
   }
 });
 
