@@ -1,1 +1,25 @@
-hii
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/Admin/style.css">
+</head>
+<body>
+  <h2>Applications List</h2>
+  <table border="1">
+    <tr>
+      <th>ID</th><th>Name</th><th>Email</th><th>Course</th><th>Category</th><th>Score</th>
+    </tr>
+    <% applications.forEach(app => { %>
+      <tr>
+        <td><%= app.id %></td>
+        <td><%= app.name %></td>
+        <td><%= app.email %></td>
+        <td><%= app.course %></td>
+        <td><%= app.category %></td>
+        <td><%= app.score %></td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>
