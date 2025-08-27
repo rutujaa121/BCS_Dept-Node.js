@@ -1,23 +1,40 @@
 import express from "express";
-import bodyParser from "body-parser";
-import userRoutes from "./routes/user.js";
+import path from "path";
+import { fileURLToPath } from "url";
+import conn from "./database/db.js";
 import adminRoutes from "./routes/admin.js";
+import userRoutes from "./routes/user.js";
 
 const app = express();
+const PORT = 3000;
 
+// Path setup
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+// EJS setup
 app.set("view engine", "ejs");
-app.set("views", "./views");
-
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.set("views", path.join(__dirname, "views"));
 
 // Routes
-app.use("/user", userRoutes);
 app.use("/admin", adminRoutes);
+app.use("/", userRoutes);
 
-app.listen(5000, () => console.log("Server running on http://localhost:5000"));
+// DB check
+// conn.connect((err) => {
+//   if (err) throw err;
+//   console.log("✅ Database connected!");
+// });
 
-
+// Start server
+app.listen(4000, () => {
+  console.log("🚀 Server running on 4000");
+});
 
 
 /*

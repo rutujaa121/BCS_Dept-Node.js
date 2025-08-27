@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Admin Dashboard</title>
+  <title><%= title %></title>
   <link rel="stylesheet" href="/Admin/style.css">
 </head>
 <body>
-  <h2>Applications List</h2>
-  <table border="1">
-    <tr>
-      <th>ID</th><th>Name</th><th>Email</th><th>Course</th><th>Category</th><th>Score</th>
-    </tr>
-    <% applications.forEach(app => { %>
-      <tr>
-        <td><%= app.id %></td>
-        <td><%= app.name %></td>
-        <td><%= app.email %></td>
-        <td><%= app.course %></td>
-        <td><%= app.category %></td>
-        <td><%= app.score %></td>
-      </tr>
-    <% }) %>
-  </table>
+  <%- include('../partials/header') %>
+  
+  <h1>Admin Dashboard</h1>
+
+  <% if (typeof users !== "undefined") { %>
+    <h2>User List</h2>
+    <ul>
+      <% users.forEach(user => { %>
+        <li><%= user.name %> - <%= user.email %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <%- include('../partials/footer') %>
 </body>
 </html>
