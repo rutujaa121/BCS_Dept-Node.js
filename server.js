@@ -1,3 +1,27 @@
+import express from "express";
+import bodyParser from "body-parser";
+import userRoutes from "./routes/user.js";
+import adminRoutes from "./routes/admin.js";
+
+const app = express();
+
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Routes
+app.use("/user", userRoutes);
+app.use("/admin", adminRoutes);
+
+app.listen(5000, () => console.log("Server running on http://localhost:5000"));
+
+
+
+
+/*
+
 // Project Setup 
 // npm i express ejs mysql util body-parser express-fileupload express-session 
 // 4 folder create 
@@ -50,6 +74,9 @@ let userRoute = require("./routes/user");
 app.listen(2000, function(){
     console.log("Server Start")
 });
+*/
+
+
 
 /*
 // Project Setup 
