@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>RBNB College</title>
     <link rel="icon" href="/header-RBNB_Logo.png" type="image/x-icon">
@@ -7,31 +8,39 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
+        <%- include('../partials/header') %>
 
     <div class="head-container">
-        <div class="social-icons">
-            <div class="email"> <i class="fa fa-envelope"></i> rbnbcollege@gmail.com</div>
-            <div class="email"> <i class="	fa fa-phone-square"></i> +91 8600955084</div>
+        <div class="college-info">
+            <div class="image-container-1">
+                <img src="/header-RBNB_Logo.png" alt="RBNB Logo">
+            </div>
+            <div class="college-name">
+                <h3>Rayat Shikshan Sanstha's</h3>
+                <h1>R. B. Narayanrao Borawake College (Autonomous)</h1>
+                <p>Savitribai Phule Pune University</p>
+                <p>Taluka Shrirampur Dist Ahmednagar
+                    <span>02422-222347</span>
+                </p>
+                <div class="social-icons">
+                    <div class="email"> <i class="fa fa-envelope"></i>
+                        rbnbcollege@gmail.com</div>
+                    <div class="email"> <i class="	fa fa-phone-square"></i> +91
+                        8600955084</div>
+                </div>
+            </div>
+            <div class="image-container-2">
+                <img src="/karmaveer-bhaurao-patil.png" alt="Karmaveer Bhaurao Patil">
+            </div>
+
         </div>
-        <div class="college-name">
-            <h3>Rayat Shikshan Sanstha's</h3>
-            <p>(Approved by AICTE, New Delhi & Affiliated to Dr. A.P.J. Abdul Kalam Technical University, Lucknow)</p>
-    </div>
-
-    <%- include('../partials/header') %>
-
-    <div class="main-college-info">
-        <h2>BCS Department</h2>
-        <p>Welcome to the BCS Department of Our College. We are committed to providing quality education and fostering a collaborative learning environment.</p>
-        <p>Our department offers a range of courses designed to equip students with the skills and knowledge needed to excel in the field of computer science.</p>
-        <p>Join us to embark on a journey of learning, innovation, and growth.</p>
-    </div>
-    
-    <h1>Welcome to BCS Department</h1>
 
 
+            <h1>Welcome to BCS Department</h1>
 
-    <%- include('../partials/footer') %>
+            <%- include('../partials/footer') %>
 </body>
+
 </html>
