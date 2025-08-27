@@ -2,8 +2,40 @@
     margin: 0;
     padding: 0;
 }
-.navbar{
-    height: 7vh;
-    max-width: 100%;
-    background-color: rgba(11, 11, 114);
+.head-container{
+    color: white;
+}
+
+.head-container .social-icons{
+    /* height: 30px; */
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    gap: 40px;
+    background-color: #7c7c7c;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: #333;
+  color: white;
+  padding: 20px;
+}
+header a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+footer {
+  background: #222;
+  color: #aaa;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }

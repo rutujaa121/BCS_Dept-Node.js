@@ -9,15 +9,7 @@
   
   <h1>Admin Dashboard</h1>
 
-  <% if (typeof users !== "undefined") { %>
-    <h2>User List</h2>
-    <ul>
-      <% users.forEach(user => { %>
-        <li><%= user.name %> - <%= user.email %></li>
-      <% }) %>
-    </ul>
-  <% } %>
-
+  
   <%- include('../partials/footer') %>
 </body>
 </html>
