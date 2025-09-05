@@ -113,6 +113,14 @@ header a {
     text-decoration: none;
 }
 
+header a:hover {
+    color: rgb(96, 206, 128);
+    transition: 0.5s;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    
+}
+
 footer {
     background: #222;
     color: #aaa;
