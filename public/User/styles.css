@@ -126,11 +126,11 @@ footer {
     height: 700px;
     background-color: rgb(21, 67, 96);
 }
-.section-container .video-container{
+/* .section-container .video-container{
     /* height: 650px; */
     /* background-color: antiquewhite; */
-    /* position: absolute; */
-}
+    /* position: absolute; 
+} */
 .section-container .video-container video{
     height: 650px;
     width: 100%;
