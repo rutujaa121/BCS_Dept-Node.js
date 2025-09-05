@@ -17,7 +17,7 @@
 .main-container .college-info {
     padding: 10px;
     text-align: center;
-    background-color: rgb(4, 4, 80);
+    background-color: rgb(21, 67, 96);
     color: white;
     /* font-size: 25px; */
     font-weight: bold;
@@ -124,7 +124,7 @@ footer {
 
 .section-container{
     height: 700px;
-    background-color: rgba(4, 4, 80, 0.8);
+    background-color: rgb(21, 67, 96);
 }
 .section-container .video-container{
     /* height: 650px; */
@@ -137,6 +137,6 @@ footer {
     background-size: cover;
     object-fit: cover;
     overflow: hidden;
-    background-color: rgb(4, 4, 80);
+    background-color: rgb(21, 67, 96);
     opacity: 0.5;
 }
