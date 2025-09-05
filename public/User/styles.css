@@ -118,7 +118,7 @@ header a:hover {
     transition: 0.5s;
     text-decoration-line: underline;
     text-decoration-thickness: 1px;
-    
+    text-underline-offset: 6px;
 }
 
 footer {
