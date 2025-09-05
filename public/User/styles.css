@@ -32,8 +32,8 @@
 }
 
 .main-container .college-info .image-container-1 {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
     border-radius: 50%;
@@ -49,8 +49,8 @@
 }
 
 .main-container .college-info .image-container-2 {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
     border-radius: 50%;
