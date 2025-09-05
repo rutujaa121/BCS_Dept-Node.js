@@ -5,38 +5,24 @@
 /* font-family: "Saira", sans-serif; */
 
 @import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Share+Tech&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
- /* font-family: "Share Tech", sans-serif; */
+/* font-family: "Share Tech", sans-serif; */
 
-*{
+* {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    /* font-family: "Titillium Web", sans-serif; */
     font-family: 'Saira', sans-serif;
 }
-/* .head-container{
-    color: white;
-} */
 
-.head-container .social-icons{
-    max-width: 100%;
-    padding: 10px;
-    padding-left: 100px;
-    display: flex;
-    gap: 50px;
-    color: rgb(240, 240, 240);
-    /* background-color:  #FFFFFF ; */
-}
-
-.head-container .college-info{
+.main-container .college-info {
     padding: 10px;
     text-align: center;
-    background-color: #2d2d2dec;
+    background-color: rgb(4, 4, 80);
     color: white;
     /* font-size: 25px; */
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     word-spacing: 4px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
@@ -45,14 +31,15 @@
     padding-right: 50px;
 }
 
-.head-container .college-info .image-container-1{
+.main-container .college-info .image-container-1 {
     height: 200px;
     width: 200px;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
     border-radius: 50%;
 }
-.head-container .college-info .image-container-1 img{
+
+.main-container .college-info .image-container-1 img {
     height: 100%;
     width: 100%;
     border-radius: 50%;
@@ -61,44 +48,95 @@
     background-size: cover;
 }
 
-.head-container .college-info .image-container-2{
+.main-container .college-info .image-container-2 {
     height: 200px;
     width: 200px;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
     border-radius: 50%;
 }
-.head-container .college-info .image-container-2 img{
+
+.main-container .college-info .image-container-2 img {
     height: 100%;
     width: 100%;
     border-radius: 50%;
-    /* border: 2px solid white; */
     background-size: cover;
 }
 
-body {
-  /* font-family: Arial, sans-serif; */
-  margin: 0;
-  padding: 0;
-  /* background-color: rgb(6, 70, 6); */
-  /* background-color: teal; */
+.main-container .college-info .college-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* align-items: center; */
+    /* gap: 10px; */
 }
+
+.main-container .college-info .college-name h3{
+    color: rgb(255, 243, 71);
+    font-size: 21px;
+    font-family: "Saira", sans-serif;
+}
+
+.main-container .college-info .college-name p{
+    color: rgba(255, 243, 71, 0.938);
+    font-size: 16px;
+    font-family: "Saira", sans-serif;
+}
+
+.main-container .college-info .college-name .social-icons{
+    max-width: 100%;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-size: 14px;
+    color: rgb(216, 216, 216);
+}
+
+
 header {
-  background: rgb(4, 4, 80);
-  color: white;
-  padding: 20px;
+    width: 100%;
+    background: rgb(34, 34, 34, 0.9);
+    color: white;
+    padding: 20px;
+    /* position: sticky;
+    top: 0px; */
 }
+
 header a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
 }
+
 footer {
-  background: #222;
-  color: #aaa;
-  padding: 10px;
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+    background: #222;
+    color: #aaa;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.section-container{
+    height: 700px;
+    background-color: rgba(4, 4, 80, 0.8);
+}
+.section-container .video-container{
+    /* height: 650px; */
+    /* background-color: antiquewhite; */
+    /* position: absolute; */
+}
+.section-container .video-container video{
+    height: 650px;
+    width: 100%;
+    background-size: cover;
+    object-fit: cover;
+    overflow: hidden;
+    background-color: rgb(4, 4, 80);
+    opacity: 0.5;
 }
