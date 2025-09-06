@@ -13,4 +13,8 @@ router.get("/about", (req, res) => {
   res.render("user/about", { title: "About Us" });
 });
 
+// Notice page
+router.get("/notice", (req, res) => {
+  res.render("user/notice", { title: "Notice" });
+});
 export default router;
