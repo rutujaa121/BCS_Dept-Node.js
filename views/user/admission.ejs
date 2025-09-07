@@ -13,42 +13,9 @@
       color: #333;
     }
 
-    header {
-      background-color: #111;
-      color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    header h1 {
-      color: #FFD700;
-      margin: 0;
-      font-size: 22px;
-    }
-
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #FFD700;
-    }
-
+    
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 30px auto;
       padding: 20px;
       background: #fff;
@@ -99,13 +66,7 @@
       background: #197d5a;
     }
 
-    footer {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
+    
   </style>
 </head>
 <body>
@@ -143,7 +104,7 @@
       </div>
       <div>
         <label>Gender</label>
-        <select required>
+        <select required name="gender">
           <option value="">-- Select Gender --</option>
           <option>Male</option>
           <option>Female</option>
@@ -151,8 +112,9 @@
         </select>
       </div>
       <div class="full-width">
-        <label>Address</label>
+        <label name="address">Address
         <textarea rows="3" placeholder="Enter your address"></textarea>
+        </label>
       </div>
       <button type="submit">Submit Application</button>
     </form>
