@@ -1,18 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Admission Form</title>
-  <!-- <link rel="stylesheet" href="/User/styles.css"> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission - RBNB College</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      color: #FFD700;
+      margin: 0;
+      font-size: 22px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #FFD700;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #003660;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    form label {
+      font-weight: bold;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .full-width {
+      grid-column: 1 / 3;
+    }
+
+    button {
+      background: #0b6e4f;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      grid-column: 1 / 3;
+    }
+
+    button:hover {
+      background: #197d5a;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Online Admission Form</h2>
-  <form action="/user/admission" method="POST">
-    <input type="text" name="name" placeholder="Full Name" required><br>
-    <input type="date" name="dob" required><br>
-    <input type="text" name="course" placeholder="Course" required><br>
-    <input type="text" name="category" placeholder="Category" required><br>
-    <input type="number" name="score" placeholder="Score" required><br>
-    <button type="submit">Submit</button>
-  </form>
+
+ <%- include('../partials/header') %>
+
+  <div class="container">
+    <h2>Admission Form</h2>
+    <form>
+      <div>
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name" required>
+      </div>
+      <div>
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" required>
+      </div>
+      <div>
+        <label>Phone Number</label>
+        <input type="text" placeholder="Enter phone number" required>
+      </div>
+      <div>
+        <label>Date of Birth</label>
+        <input type="date" required>
+      </div>
+      <div>
+        <label>Course</label>
+        <select required>
+          <option value="">-- Select Course --</option>
+          <option>B.Sc Computer Science</option>
+          <option disabled>B.Sc Mathematics</option>
+          <option disabled>B.Com</option>
+          <option disabled>B.A</option>
+        </select>
+      </div>
+      <div>
+        <label>Gender</label>
+        <select required>
+          <option value="">-- Select Gender --</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="full-width">
+        <label>Address</label>
+        <textarea rows="3" placeholder="Enter your address"></textarea>
+      </div>
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+
+  <%- include('../partials/footer') %>
+
 </body>
 </html>
