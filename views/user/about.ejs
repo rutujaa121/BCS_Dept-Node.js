@@ -1,14 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/Admin/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About Us — RBNB College</title>
+  <style>
+    :root {
+      --primary: #0b6e4f;
+      --dark: #333;
+      --muted: #666;
+      --bg: #f7f7f7;
+      --card: #fff;
+      --radius: 8px;
+      --maxw: 1100px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--dark); }
+    header, footer { background: var(--dark); color: #fff; padding: 20px; }
+    .container { max-width: var(--maxw); margin: auto; padding: 20px; }
+    nav a { color: #ddd; margin-left: 15px; text-decoration: none; }
+    h1 { margin-bottom: 15px; }
+    .intro { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .intro h2 { color: var(--primary); margin-bottom: 10px; }
+    .two-col { display: flex; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
+    .two-col .text { flex: 1 1 300px; }
+    .two-col .image img { width: 100%; border-radius: var(--radius); }
+    .stats { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin: 30px 0; }
+    .stat-card { background: var(--card); padding: 20px; text-align: center; border-radius: var(--radius); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .team { margin: 30px 0; }
+    .team h3 { margin-bottom: 20px; }
+    .team-cards { display: flex; gap: 20px; flex-wrap: wrap; }
+    .team-card { flex: 1 1 200px; background: var(--card); padding: 20px; text-align:center; border-radius: var(--radius); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .team-card img { width: 100%; border-radius: 50%; margin-bottom: 15px; }
+    .team-card h4 { margin-bottom: 5px; }
+    footer { text-align: center; font-size: 14px; }
+  </style>
 </head>
 <body>
-  <%- include('../partials/header') %>
-  
-  <h1>About Dashboard</h1>
-  
+  <header>
+    <div class="container">
+      <span style="font-weight:bold;">RBNB College</span>
+      <nav style="float:right;">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/admin">Admin</a>
+        <a href="/notice">Notice</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h1>About Us</h1>
+      <p>At RBNB College, we’re dedicated to empowering students through innovation, collaboration, and excellence in education.</p>
+    </section>
+
+    <section class="two-col">
+      <div class="text">
+        <h2>Our Mission</h2>
+        <p>To nurture future leaders by providing inclusive, high-quality education that fosters lifelong learning and critical thinking.</p>
+        <h2>Our Values</h2>
+        <ul>
+          <li>Excellence in learning</li>
+          <li>Integrity and respect</li>
+          <li>Innovation and creativity</li>
+          <li>Community engagement</li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="https://via.placeholder.com/500x300" alt="Campus Image">
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card">
+        <h3>Founded</h3>
+        <p>1995</p>
+      </div>
+      <div class="stat-card">
+        <h3>Students</h3>
+        <p>3500+</p>
+      </div>
+      <div class="stat-card">
+        <h3>Departments</h3>
+        <p>8</p>
+      </div>
+      <div class="stat-card">
+        <h3>Faculty</h3>
+        <p>120+</p>
+      </div>
+    </section>
+
+    <section class="team">
+      <h3>Meet Our Leadership</h3>
+      <div class="team-cards">
+        <div class="team-card">
+          <img src="https://via.placeholder.com/150" alt="Principal">
+          <h4>Dr. S. Kumar</h4>
+          <p>Principal</p>
+        </div>
+        <div class="team-card">
+          <img src="https://via.placeholder.com/150" alt="Dean">
+          <h4>Prof. A. Mehta</h4>
+          <p>Dean of Academics</p>
+        </div>
+        <div class="team-card">
+          <img src="https://via.placeholder.com/150" alt="Registrar">
+          <h4>Ms. L. Patel</h4>
+          <p>Registrar</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <%- include('../partials/footer') %>
 </body>
 </html>

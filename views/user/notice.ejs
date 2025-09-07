@@ -1,14 +1,219 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/Admin/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>College Notices — RBNB College</title>
+  <style>
+    /* Reset + simple variables */
+    :root{
+      --dark:#333333;
+      --accent:#0b6e4f; /* green-blue accent */
+      --muted:#6b6b6b;
+      --card:#ffffff;
+      --bg:#f7f7f7;
+      --maxw:1100px;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, Arial, sans-serif; margin:0; background:var(--bg); color:#111}
+
+    /* Header */
+    .site-header{background:var(--dark); color:#fff; padding:18px 16px}
+    .container{max-width:var(--maxw); margin:0 auto;}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:700; letter-spacing:0.6px}
+    .nav-links{display:flex;gap:22px}
+    .nav-links a{color:#ddd;text-decoration:none;font-size:15px}
+
+    /* Hero */
+    .hero{background:#fff;padding:34px 16px 28px;border-bottom:1px solid #e6e6e6}
+    .hero-grid{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+    .hero-title{font-size:34px;font-weight:800;margin:0}
+    .hero-sub{color:var(--muted);margin-top:6px}
+
+    /* Layout */
+    .main{display:grid;grid-template-columns:320px 1fr;gap:28px;padding:26px 16px}
+
+    /* Sidebar */
+    .sidebar{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .filters h4{margin:0 0 10px 0}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid #eee;font-size:14px;cursor:pointer}
+    .chip.active{background:var(--accent);color:#fff;border-color:transparent}
+
+    /* Notices list */
+    .notice-list{display:flex;flex-direction:column;gap:16px}
+    .notice-card{background:var(--card);padding:18px;border-radius:10px;border:1px solid #eee;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    .notice-content{max-width:78%}
+    .notice-title{font-weight:700;margin:0 0 6px 0}
+    .notice-meta{color:var(--muted);font-size:13px}
+    .badge{background:var(--accent);color:#fff;padding:6px 10px;border-radius:6px;font-weight:600;font-size:13px}
+
+    /* Important notice */
+    .important{background:linear-gradient(90deg,#fff7f0,#fff);border-left:6px solid #ff6b6b}
+
+    /* Actions */
+    .actions{display:flex;gap:10px}
+    .btn{padding:8px 14px;border-radius:8px;border:0;background:var(--dark);color:#fff;cursor:pointer}
+    .btn.secondary{background:#fff;border:1px solid #ddd;color:#222}
+
+    /* Footer */
+    .site-footer{background:var(--dark);color:#ddd;padding:14px 16px;margin-top:28px}
+    .site-footer .container{display:flex;align-items:center;justify-content:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .main{grid-template-columns:1fr}
+      .notice-content{max-width:100%}
+      .hero-title{font-size:28px}
+    }
+  </style>
 </head>
 <body>
-  <%- include('../partials/header') %>
-  
-  <h1>Notice Dashboard</h1>
-  
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">RBNB College</div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/admin">Admin</a>
+        <a href="/notice">Notice</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1 class="hero-title">Notices</h1>
+        <p class="hero-sub">Latest announcements and important updates for students and staff.</p>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:10px;align-items:center;">
+        <button class="btn" id="uploadBtn">Upload Notice</button>
+        <button class="btn secondary" id="archiveBtn">View Archive</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="container main">
+    <aside class="sidebar">
+      <div class="filters">
+        <h4>Filter by</h4>
+        <div class="chips">
+          <div class="chip active" data-filter="all">All</div>
+          <div class="chip" data-filter="important">Important</div>
+          <div class="chip" data-filter="academic">Academic</div>
+          <div class="chip" data-filter="events">Events</div>
+          <div class="chip" data-filter="exam">Exams</div>
+        </div>
+        <hr style="margin:16px 0" />
+        <h4>Search</h4>
+        <input id="search" placeholder="Search notices..." style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6" />
+      </div>
+    </aside>
+
+    <section>
+      <div class="notice-list" id="noticeList">
+        <!-- Important notice card -->
+        <article class="notice-card important" data-type="important">
+          <div class="notice-content">
+            <h3 class="notice-title">Urgent: Semester exam dates released</h3>
+            <div class="notice-meta">Posted on 06 Sep 2025 • Academic Office</div>
+            <p style="margin-top:10px;color:var(--muted)">Exams will start from 15th September. Please check the timetable posted on the notice board and follow the instructions shared by the exam committee.</p>
+          </div>
+          <div class="actions">
+            <div class="badge">Important</div>
+            <button class="btn secondary viewBtn">View</button>
+          </div>
+        </article>
+
+        <!-- Regular notices (sample) -->
+        <article class="notice-card" data-type="events">
+          <div class="notice-content">
+            <h3 class="notice-title">Tech Fest registration open</h3>
+            <div class="notice-meta">Posted on 02 Sep 2025 • Student Council</div>
+            <p style="margin-top:10px;color:var(--muted)">Register your team for the annual Tech Fest. Multiple competitions and prizes. Last date: 10th Sept.</p>
+          </div>
+          <div class="actions">
+            <div class="badge">Events</div>
+            <button class="btn secondary viewBtn">View</button>
+          </div>
+        </article>
+
+        <article class="notice-card" data-type="academic">
+          <div class="notice-content">
+            <h3 class="notice-title">Guest lecture on Data Structures</h3>
+            <div class="notice-meta">Posted on 28 Aug 2025 • Dept. of CS</div>
+            <p style="margin-top:10px;color:var(--muted)">Dr. Sharma will deliver a lecture on Advanced Data Structures on 12th Sep at the AV hall. All students are invited.</p>
+          </div>
+          <div class="actions">
+            <div class="badge">Academic</div>
+            <button class="btn secondary viewBtn">View</button>
+          </div>
+        </article>
+
+        <article class="notice-card" data-type="exam">
+          <div class="notice-content">
+            <h3 class="notice-title">Practical exam venue changed</h3>
+            <div class="notice-meta">Posted on 20 Aug 2025 • Lab In-charge</div>
+            <p style="margin-top:10px;color:var(--muted)">Practical exams for CS Dept. will be held in Lab 302 instead of Lab 201 due to maintenance work.</p>
+          </div>
+          <div class="actions">
+            <div class="badge">Exam</div>
+            <button class="btn secondary viewBtn">View</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
   <%- include('../partials/footer') %>
+
+  <script>
+    // Simple client-side filtering + search (no backend required)
+    const chips = document.querySelectorAll('.chip');
+    const notices = Array.from(document.querySelectorAll('.notice-card'));
+    const search = document.getElementById('search');
+
+    chips.forEach(chip => chip.addEventListener('click', ()=>{
+      chips.forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      filterNotices();
+    }));
+
+    search.addEventListener('input', ()=>filterNotices());
+
+    function filterNotices(){
+      const active = document.querySelector('.chip.active').dataset.filter;
+      const q = search.value.trim().toLowerCase();
+      notices.forEach(n=>{
+        const type = n.dataset.type || 'all';
+        const title = n.querySelector('.notice-title').innerText.toLowerCase();
+        const body = (n.querySelector('p')||{innerText:''}).innerText.toLowerCase();
+        const matchesType = (active==='all') ? true : (active===type);
+        const matchesQuery = q? (title.includes(q) || body.includes(q)) : true;
+        n.style.display = (matchesType && matchesQuery) ? 'flex' : 'none';
+      });
+    }
+
+    // View button: show details in a simple dialog
+    document.querySelectorAll('.viewBtn').forEach(btn=>btn.addEventListener('click', (e)=>{
+      const card = e.target.closest('.notice-card');
+      const title = card.querySelector('.notice-title').innerText;
+      const meta = card.querySelector('.notice-meta').innerText;
+      const body = (card.querySelector('p')||{innerText:''}).innerText;
+      alert(title + '\n\n' + meta + '\n\n' + body);
+    }));
+
+    // Upload & archive hooks (placeholder)
+    document.getElementById('uploadBtn').addEventListener('click', ()=>{
+      alert('Upload dialog - implement backend form to upload notices.');
+    });
+    document.getElementById('archiveBtn').addEventListener('click', ()=>{
+      alert('Archive list - implement archive view or toggle.');
+    });
+  </script>
 </body>
 </html>
