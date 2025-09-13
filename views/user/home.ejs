@@ -2,18 +2,167 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>RBNB College</title>
     <link rel="icon" href="/header-RBNB_Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/User/styles.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        :root {
+            --primary: #0b6e4f;
+            --dark: #333;
+            --bg: #f7f7f7;
+            --card: #fff;
+            --radius: 8px;
+            --maxw: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+        }
+
+        .main-container {
+            max-width: var(--maxw);
+            margin: 40px auto;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .image-container-1 img,
+        .image-container-2 img {
+            width: 120px;
+            height: auto;
+        }
+
+        .college-name {
+            flex: 1 1 500px;
+            text-align: center;
+        }
+
+        .college-name h3 {
+            color: var(--primary);
+            font-weight: normal;
+        }
+
+        .college-name h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .college-name p {
+            margin: 5px 0;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 14px;
+        }
+
+        .social-icons i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        /* Video Banner */
+        .section-container {
+            height: 350px;
+            margin: 40px auto;
+            max-width: var(--maxw);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .video-container{
+            width: 100%;
+            height: 100%;
+            padding: 5px 5px;
+            overflow: hidden;
+            /* background-color: aqua; */
+        }
+        .video-container video {
+            height: 400px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            max-width: var(--maxw);
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .link-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .link-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .link-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .link-card p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .link-card a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .link-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+    </style>
 </head>
 
 <body>
-        <%- include('../partials/header') %>
+    <%- include('../partials/header') %>
 
-    <div class="main-container">
-        <div class="college-info">
+        <!-- College Info -->
+        <div class="main-container">
             <div class="image-container-1">
                 <img src="/header-RBNB_Logo.png" alt="RBNB Logo">
             </div>
@@ -21,30 +170,49 @@
                 <h3>Rayat Shikshan Sanstha's</h3>
                 <h1>R. B. Narayanrao Borawake College (Autonomous)</h1>
                 <p>Savitribai Phule Pune University</p>
-                <p>Taluka Shrirampur Dist Ahmednagar
-                    <span>02422-222347</span>
-                </p>
+                <p>Taluka Shrirampur Dist Ahmednagar <span>02422-222347</span></p>
                 <div class="social-icons">
-                    <div class="email"> <i class="fa fa-envelope"></i>
-                        rbnbcollege@gmail.com</div>
-                    <div class="email"> <i class="	fa fa-phone-square"></i> +91
-                        8600955084</div>
+                    <div class="email"><i class="fa fa-envelope"></i> rbnbcollege@gmail.com</div>
+                    <div class="phone"><i class="fa fa-phone-square"></i> +91 8600955084</div>
                 </div>
             </div>
             <div class="image-container-2">
                 <img src="/karmaveer-bhaurao-patil.png" alt="Karmaveer Bhaurao Patil">
             </div>
+        </div>
 
+        <!-- Video Section -->
+        <div class="section-container">
+            <div class="video-container">
+                <video autoplay muted loop>
+                    <source src="/course-video.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
-    </div>
-    <div class="section-container">
-        <div class="video-container">
-            <video autoplay muted loop>
-                <source src="/course-video.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-            <%- include('../partials/footer') %>
+
+        <!-- Quick Links Section -->
+        <section class="quick-links">
+            <div class="link-card">
+                <i class="fa fa-bullhorn"></i>
+                <h3>Notice Board</h3>
+                <p>Stay updated with latest announcements and circulars.</p>
+                <a href="/notice">View Notices</a>
+            </div>
+            <div class="link-card">
+                <i class="fa fa-graduation-cap"></i>
+                <h3>Admissions</h3>
+                <p>Apply online for various courses and programs.</p>
+                <a href="/admission">Apply Now</a>
+            </div>
+            <div class="link-card">
+                <i class="fa fa-university"></i>
+                <h3>About Us</h3>
+                <p>Learn more about RBNB College, our vision and mission.</p>
+                <a href="/about">Read More</a>
+            </div>
+        </section>
+
+        <%- include('../partials/footer') %>
 </body>
 
 </html>
