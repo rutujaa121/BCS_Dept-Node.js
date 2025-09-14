@@ -22,4 +22,9 @@ router.get("/admission", (req, res) => {
 router.get("/notice", (req, res) => {
   res.render("user/notice", { title: "Notice" });
 });
+
+// Registration page
+router.get("/registration", (req, res) => {
+  res.render("user/registration", { title: "Registration" });
+});
 export default router;
