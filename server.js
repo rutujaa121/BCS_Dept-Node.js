@@ -4,14 +4,32 @@ import { fileURLToPath } from "url";
 import conn from "./database/db.js";
 import adminRoutes from "./routes/admin.js";
 import userRoutes from "./routes/user.js";
+// import authRoutes from "./routes/auth.js";
+//import { authRoutes } from './routes/auth.js';
 
+// import { isLoggedIn } from './middleware/isAuth.js';
 const app = express();
-// const PORT = 3000;
 
 // Path setup
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// const authRoutes = require('./routes/auth');
+// const { isLoggedIn } = require('./middleware/isAuth');
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+// session setup here...
+
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// Public routes
+// app.use('/', authRoutes);
+
+// Protected route
+// app.get('/registration', isLoggedIn, (req, res) => {
+//   res.render('registration', { userEmail: req.session.userEmail });
+// });
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
