@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admission - RBNB College</title>
   <style>
     :root {
@@ -27,7 +28,7 @@
       padding: 24px;
       background: var(--card);
       border-radius: var(--radius);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     }
 
     h2 {
@@ -53,7 +54,9 @@
       margin-bottom: 5px;
     }
 
-    input, select, textarea {
+    input,
+    select,
+    textarea {
       width: 100%;
       padding: 10px;
       border: 1px solid #ddd;
@@ -61,7 +64,9 @@
       font-size: 14px;
     }
 
-    input:focus, select:focus, textarea:focus {
+    input:focus,
+    select:focus,
+    textarea:focus {
       border: 1px solid var(--accent);
       outline: none;
     }
@@ -127,195 +132,226 @@
       color: #fff;
     }
 
-    @media(max-width: 768px){
+    @media(max-width: 768px) {
       .step.active {
         grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body>
 
   <%- include('../partials/header') %>
 
-  <div class="container">
-    <h2>Admission Form</h2>
+    <div class="container">
+      <h2>Admission Form</h2>
 
-    <!-- Progress Bar -->
-    <div class="progress">
-      <div class="circle active">1</div>
-      <div class="circle">2</div>
-      <div class="circle">3</div>
-      <div class="circle">4</div>
+      <!-- Progress Bar -->
+      <div class="progress">
+        <div class="circle active">1</div>
+        <div class="circle">2</div>
+        <div class="circle">3</div>
+        <div class="circle">4</div>
+      </div>
+
+      <form id="admissionForm">
+        <!-- Step 1 -->
+        <div class="step active">
+          <div>
+            <label>Full Name</label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" required>
+          </div>
+          <div>
+            <label>Phone Number</label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Gender</label>
+            <select required>
+              <option value="">-- Select Gender --</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label>Date of Birth</label>
+            <input type="date" required>
+          </div>
+          <div>
+            <label>Course</label>
+            <select required>
+              <option value="">-- Select Course --</option>
+              <option>B.Sc Computer Science</option>
+              <option disabled>B.Sc Mathematics</option>
+              <option disabled>B.Com</option>
+              <option disabled>B.A</option>
+            </select>
+          </div>
+          <div>
+            <label>Class</label>
+            <select required>
+              <option value="">-- Select Class --</option>
+              <option>FY</option>
+              <option>SY</option>
+              <option>TY</option>
+            </select>
+          </div>
+          <div class="full-width">
+            <label>Address</label>
+            <textarea rows="3" required></textarea>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div>
+            <label>Your Photo</label>
+            <input type="file" required>
+          </div>
+          <div>
+            <label>Aadhar Card</label>
+            <input type="file" required>
+          </div>
+          <div>
+            <label>12th Marksheet</label>
+            <input type="file" required>
+          </div>
+          <div>
+            <label>10th Marksheet</label>
+            <input type="file" required>
+          </div>
+          <div>
+            <label>Student Signature</label>
+            <input type="file" required>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+          <div>
+            <label>Father Full Name</label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Father Contact</label>
+            <input type="number" required>
+          </div>
+          <div>
+            <label>Father Email</label>
+            <input type="email" required>
+          </div>
+          <div>
+            <label>Father Qualification</label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Mother Name</label>
+            <input type="text" required>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+          <select name="Class" id="classSelect">
+            <option value="">-- Select Class --</option>
+            <option value="FY">FY</option>
+            <option value="SY">SY</option>
+            <option value="TY">TY</option>
+          </select>
+        </div>
+
+        <div class="step">
+          <select name="Subject" id="subjectSelect">
+            <option value="">-- Select Subject --</option>
+            <!-- विषय येथून dynamic येतील -->
+          </select>
+        </div>
+
+
+        <!-- Navigation buttons -->
+        <div class="buttons">
+          <button type="button" id="prevBtn" onclick="nextPrev(-1)">Back</button>
+          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </form>
     </div>
 
-    <form id="admissionForm">
-      <!-- Step 1 -->
-      <div class="step active">
-        <div>
-          <label>Full Name</label>
-          <input type="text" required>
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" required>
-        </div>
-        <div>
-          <label>Phone Number</label>
-          <input type="text" required>
-        </div>
-        <div>
-          <label>Gender</label>
-          <select required>
-            <option value="">-- Select Gender --</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div>
-          <label>Date of Birth</label>
-          <input type="date" required>
-        </div>
-        <div>
-          <label>Course</label>
-          <select required>
-            <option value="">-- Select Course --</option>
-            <option>B.Sc Computer Science</option>
-            <option disabled>B.Sc Mathematics</option>
-            <option disabled>B.Com</option>
-            <option disabled>B.A</option>
-          </select>
-        </div>
-        <div>
-          <label>Class</label>
-          <select required>
-            <option value="">-- Select Class --</option>
-            <option>FY</option>
-            <option>SY</option>
-            <option>TY</option>
-          </select>
-        </div>
-        <div class="full-width">
-          <label>Address</label>
-          <textarea rows="3" required></textarea>
-        </div>
-      </div>
+    <%- include('../partials/footer') %>
 
-      <!-- Step 2 -->
-      <div class="step">
-        <div>
-          <label>Your Photo</label>
-          <input type="file" required>
-        </div>
-        <div>
-          <label>Aadhar Card</label>
-          <input type="file" required>
-        </div>
-        <div>
-          <label>12th Marksheet</label>
-          <input type="file" required>
-        </div>
-        <div>
-          <label>10th Marksheet</label>
-          <input type="file" required>
-        </div>
-        <div>
-          <label>Student Signature</label>
-          <input type="file" required>
-        </div>
-      </div>
+      <script>
+        let currentStep = 0;
+        const steps = document.querySelectorAll(".step");
+        const circles = document.querySelectorAll(".progress .circle");
+        const nextBtn = document.getElementById("nextBtn");
+        const prevBtn = document.getElementById("prevBtn");
 
-      <!-- Step 3 -->
-      <div class="step">
-        <div>
-          <label>Father Full Name</label>
-          <input type="text" required>
-        </div>
-        <div>
-          <label>Father Contact</label>
-          <input type="number" required>
-        </div>
-        <div>
-          <label>Father Email</label>
-          <input type="email" required>
-        </div>
-        <div>
-          <label>Father Qualification</label>
-          <input type="text" required>
-        </div>
-        <div>
-          <label>Mother Name</label>
-          <input type="text" required>
-        </div>
-      </div>
+        function showStep(n) {
+          steps.forEach((step, index) => {
+            step.classList.remove("active");
+            if (index === n) step.classList.add("active");
+          });
 
-      <!-- Step 4 -->
-      <div class="step">
-        <select name="Class" id="">
-          <option value="">-- Select Class --</option>
-          <option>FY</option>
-          <option>SY</option>
-          <option>TY</option>
-        </select>
-      </div>
+          circles.forEach((c, i) => {
+            c.classList.remove("active");
+            if (i <= n) c.classList.add("active");
+          });
 
-      <!-- Navigation buttons -->
-      <div class="buttons">
-        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Back</button>
-        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-      </div>
-    </form>
-  </div>
-
-  <%- include('../partials/footer') %>
-
-  <script>
-    let currentStep = 0;
-    const steps = document.querySelectorAll(".step");
-    const circles = document.querySelectorAll(".progress .circle");
-    const nextBtn = document.getElementById("nextBtn");
-    const prevBtn = document.getElementById("prevBtn");
-
-    function showStep(n) {
-      steps.forEach((step, index) => {
-        step.classList.remove("active");
-        if (index === n) step.classList.add("active");
-      });
-
-      circles.forEach((c, i) => {
-        c.classList.remove("active");
-        if (i <= n) c.classList.add("active");
-      });
-
-      prevBtn.style.display = n === 0 ? "none" : "inline-block";
-      nextBtn.innerHTML = n === (steps.length - 1) ? "Submit" : "Next";
-    }
-
-    function nextPrev(n) {
-      if (n === 1 && !validateForm()) return false;
-      currentStep += n;
-
-      if (currentStep >= steps.length) {
-        document.getElementById("admissionForm").submit();
-        return false;
-      }
-      showStep(currentStep);
-    }
-
-    function validateForm() {
-      let valid = true;
-      const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
-      inputs.forEach(input => {
-        if (!input.checkValidity()) {
-          input.reportValidity();
-          valid = false;
+          prevBtn.style.display = n === 0 ? "none" : "inline-block";
+          nextBtn.innerHTML = n === (steps.length - 1) ? "Submit" : "Next";
         }
-      });
-      return valid;
-    }
 
-    showStep(currentStep);
-  </script>
+        function nextPrev(n) {
+          if (n === 1 && !validateForm()) return false;
+          currentStep += n;
+
+          if (currentStep >= steps.length) {
+            document.getElementById("admissionForm").submit();
+            return false;
+          }
+          showStep(currentStep);
+        }
+
+        function validateForm() {
+          let valid = true;
+          const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
+          inputs.forEach(input => {
+            if (!input.checkValidity()) {
+              input.reportValidity();
+              valid = false;
+            }
+          });
+          return valid;
+        }
+
+        showStep(currentStep);
+
+
+        // Dynamic subject loading based on class selection
+         const classSelect = document.getElementById("classSelect");
+    const subjectSelect = document.getElementById("subjectSelect");
+
+    classSelect.addEventListener("change", function() {
+      const selectedClass = this.value;
+       // subjectSelect साफ करा
+      subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+
+      if (selectedClass && subjectsByClass[selectedClass]) {
+        const subList = subjectsByClass[selectedClass];
+        subList.forEach(function(sub) {
+          const opt = document.createElement("option");
+          opt.value = sub;
+          opt.text = sub;
+          subjectSelect.appendChild(opt);
+        });
+      }
+    });
+      </script>
 </body>
+
 </html>
