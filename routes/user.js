@@ -27,4 +27,6 @@ router.get("/notice", (req, res) => {
 router.get("/registration", (req, res) => {
   res.render("user/registration", { title: "Registration" });
 });
+
+
 export default router;

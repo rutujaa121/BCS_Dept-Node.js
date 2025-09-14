@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admission PDF</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h2 { text-align: center; }
+    .field { margin-bottom: 15px; }
+    .label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Admission Details</h2>
+  <div class="field">
+    <span class="label">Name: </span><span><%= formData.fullName %></span>
+  </div>
+  <div class="field">
+    <span class="label">Email: </span><span><%= formData.email %></span>
+  </div>
+  <div class="field">
+    <span class="label">Class: </span><span><%= formData.classFinal %></span>
+  </div>
+  <div class="field">
+    <span class="label">Subjects: </span><span><%= Array.isArray(formData.subjectsFinal) ? formData.subjectsFinal.join(', ') : formData.subjectsFinal %></span>
+  </div>
+</body>
+</html>
