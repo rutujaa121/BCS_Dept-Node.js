@@ -28,5 +28,11 @@ router.get("/registration", (req, res) => {
   res.render("user/registration", { title: "Registration" });
 });
 
+router.get("/login", (req, res) => {
+  res.render("user/user", { title: "Registration" });
+});
+
+
+
 
 export default router;

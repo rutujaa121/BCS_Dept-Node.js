@@ -16,4 +16,7 @@ router.get("/users", (req, res) => {
   });
 });
 
+router.get("/login", (req, res) => {
+  res.render("admin/login", { title: "Login Us" });
+});
 export default router;
